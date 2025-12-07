@@ -1,0 +1,93 @@
+﻿using library_management_system_backend.Data;
+using library_management_system_backend.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace library_management_system_backend.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class BookController : ControllerBase
+    {
+        private readonly AppDbContext appdbcontext;
+
+        public BookController(AppDbContext appDbContext)
+        {
+            appdbcontext = appDbContext;
+        }
+
+        [HttpGet]
+        [Route("getAllBooks")]
+        public async Task<IEnumerable<Book>> GetAllBooks()
+        {
+            return await appdbcontext.Books.ToListAsync();
+        }
+
+        [HttpGet]
+        [Route("getBook/{id}")]
+        public async Task<ActionResult<Book>> GetBook(string id)
+        {
+            var book = await appdbcontext.Books.FindAsync(id);
+
+            if (book == null)
+            {
+                return NotFound();
+            }
+
+            return book;
+        }
+
+        [HttpPost]
+        [Route("addBook")]
+        public async Task<ActionResult<Book>> AddBook(Book objBook)
+        {
+            appdbcontext.Books.Add(objBook);
+            await appdbcontext.SaveChangesAsync();
+            
+            return CreatedAtAction(nameof(GetBook), new { id = objBook.id }, objBook);
+        }
+
+        [HttpPatch]
+        [Route("updateBook/{id}")]
+        public async Task<IActionResult> Update(string id, Book objBook)
+        {
+            if (id != objBook.id)
+            {
+                return BadRequest("ID mismatch");
+            }
+
+            appdbcontext.Entry(objBook).State = EntityState.Modified;
+            
+            try
+            {
+                await appdbcontext.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                var exists = await appdbcontext.Books.AnyAsync(b => b.id == id);
+                if (!exists)
+                {
+                    return NotFound();
+                }
+                throw;
+            }
+
+            return NoContent();
+        }
+
+        [HttpDelete]
+        [Route("deleteBook/{id}")]
+        public async Task<IActionResult> DeleteBook(string id)
+        {
+            var book = await appdbcontext.Books.FindAsync(id);
+
+            if (book == null) return NotFound();
+
+            appdbcontext.Books.Remove(book);
+            await appdbcontext.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+    }
+}

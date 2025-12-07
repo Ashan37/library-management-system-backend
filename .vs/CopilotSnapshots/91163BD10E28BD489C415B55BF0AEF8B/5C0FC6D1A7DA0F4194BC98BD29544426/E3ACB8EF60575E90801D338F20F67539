@@ -1,0 +1,106 @@
+﻿using library_management_system_backend.Data;
+using library_management_system_backend.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace library_management_system_backend.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class UserController : ControllerBase
+    {
+        private readonly AppDbContext _appDbContext;
+
+        public UserController(AppDbContext appDbContext)
+        {
+            _appDbContext = appDbContext;
+        }
+
+        [HttpGet]
+        [Route("getAllUsers")]
+        public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
+        {
+            return Ok(await _appDbContext.Users.ToListAsync());
+        }
+
+        [HttpGet]
+        [Route("getUser/{id}")]
+        public async Task<ActionResult<User>> GetUser(int id)
+        {
+            var user = await _appDbContext.Users.FindAsync(id);
+
+            if (user == null)
+            {
+                return NotFound($"User with ID {id} not found");
+            }
+
+            return Ok(user);
+        }
+
+        [HttpPost]
+        [Route("addUser")]
+        public async Task<ActionResult<User>> AddUser(User objUser)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _appDbContext.Users.Add(objUser);
+            await _appDbContext.SaveChangesAsync();
+            
+            return CreatedAtAction(nameof(GetUser), new { id = objUser.id }, objUser);
+        }
+
+        [HttpPut]
+        [Route("updateUser/{id}")]
+        public async Task<IActionResult> UpdateUser(int id, User objUser)
+        {
+            if (id != objUser.id)
+            {
+                return BadRequest("ID mismatch");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _appDbContext.Entry(objUser).State = EntityState.Modified;
+
+            try
+            {
+                await _appDbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                var exists = await _appDbContext.Users.AnyAsync(u => u.id == id);
+                if (!exists)
+                {
+                    return NotFound($"User with ID {id} not found");
+                }
+                throw;
+            }
+
+            return NoContent();
+        }
+
+        [HttpDelete]
+        [Route("deleteUser/{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            var user = await _appDbContext.Users.FindAsync(id);
+
+            if (user == null)
+            {
+                return NotFound($"User with ID {id} not found");
+            }
+
+            _appDbContext.Users.Remove(user);
+            await _appDbContext.SaveChangesAsync();
+
+            return NoContent();
+        }
+    }
+}
