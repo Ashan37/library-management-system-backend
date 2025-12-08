@@ -1,8 +1,8 @@
-# Library Management System - Backend API
+﻿# Library Management System - Backend API
 
 A RESTful API built with ASP.NET Core for managing a library system with user authentication, book management, and JWT-based authorization.
 
-## ?? Features
+## Features
 
 - **User Authentication**
   - User registration with email validation
@@ -20,20 +20,20 @@ A RESTful API built with ASP.NET Core for managing a library system with user au
   - CORS enabled for frontend integration
   - Environment-based configuration
 
-## ??? Tech Stack
+## Tech Stack
 
 - **Framework:** ASP.NET Core 10.0
 - **Database:** SQLite with Entity Framework Core
 - **Authentication:** JWT Bearer Tokens
 - **Password Hashing:** BCrypt.Net-Next
-- **API Documentation:** OpenAPI/Swagger
+- **API Documentation:** OpenAPI
 
-## ?? Prerequisites
+## Prerequisites
 
 - [.NET 10.0 SDK](https://dotnet.microsoft.com/download)
 - [EF Core Tools](https://docs.microsoft.com/en-us/ef/core/cli/dotnet) (for database migrations)
 
-## ?? Installation & Setup
+## Installation & Setup
 
 ### 1. Clone the Repository
 
@@ -85,7 +85,7 @@ The API will be available at:
 - **HTTP:** http://localhost:5119
 - **HTTPS:** https://localhost:7163
 
-## ?? API Endpoints
+## API Endpoints
 
 ### Authentication (Public)
 
@@ -95,9 +95,9 @@ POST /api/Auth/register
 Content-Type: application/json
 
 {
-  "name": "John Doe",
-  "email": "john@example.com",
-  "password": "password123"
+  "name": "Ashan",
+  "email": "ashan@gmail.com",
+  "password": "12345678"
 }
 ```
 
@@ -106,8 +106,8 @@ Content-Type: application/json
 {
   "message": "User registered successfully",
   "userId": 1,
-  "name": "John Doe",
-  "email": "john@example.com"
+  "name": "Ashan",
+  "email": "ashan@gmail.com"
 }
 ```
 
@@ -117,8 +117,8 @@ POST /api/Auth/login
 Content-Type: application/json
 
 {
-  "email": "john@example.com",
-  "password": "password123"
+  "email": "ashan@gmail.com",
+  "password": "12345678"
 }
 ```
 
@@ -128,8 +128,8 @@ Content-Type: application/json
   "message": "Login successful",
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
   "userId": 1,
-  "name": "John Doe",
-  "email": "john@example.com"
+  "name": "Ashan",
+  "email": "ashan@gmail.com"
 }
 ```
 
@@ -180,7 +180,7 @@ Content-Type: application/json
 DELETE /api/Book/deleteBook/{id}
 ```
 
-## ?? Password Security Implementation
+## Password Security Implementation
 
 ### BCrypt Hashing
 
@@ -253,13 +253,10 @@ $2a$11$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy
 
 ### Security Features
 
-- **Work Factor:** 11 (2^11 = 2,048 iterations)
-- **Automatic Salting:** Each password gets a unique salt
 - **One-way Hashing:** Cannot be decrypted
-- **Constant-time Comparison:** Prevents timing attacks
 - **Minimum Length:** 6 characters enforced
 
-## ?? Authentication Flow
+## Authentication Flow
 
 1. **Register** a new user via `/api/Auth/register`
    - Password is automatically hashed with BCrypt (work factor: 11)
@@ -272,7 +269,7 @@ $2a$11$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy
    ```
 4. Token expires after 24 hours
 
-## ?? CORS Configuration
+## CORS Configuration
 
 The API is configured to accept requests from:
 - `http://localhost:5173` (Vite default port)
@@ -283,55 +280,37 @@ To add more origins, update `Program.cs`:
 policy.WithOrigins("http://localhost:5173", "http://localhost:5174", "your-new-origin")
 ```
 
-## ?? Project Structure
+## Project Structure
 
 ```
 library-management-system-backend/
-??? Controllers/
-?   ??? AuthController.cs      # Authentication endpoints with BCrypt
-?   ??? BookController.cs      # Book CRUD operations
-??? Data/
-?   ??? AppDbContext.cs        # EF Core database context
-?   ??? AppDbContextFactory.cs # Design-time DB factory
-??? Models/
-?   ??? User.cs                # User entity (password: 255 chars)
-?   ??? UserDTO.cs             # User data transfer object
-?   ??? LoginDTO.cs            # Login request model
-?   ??? Book.cs                # Book entity
-??? Migrations/                # EF Core migrations
-??? Properties/
-?   ??? launchSettings.json    # Launch profiles
-??? Program.cs                 # Application entry point
-??? appsettings.json          # Configuration
-??? library.db                # SQLite database (created after setup)
+├── Controllers/
+│   ├── AuthController.cs      # Authentication endpoints with BCrypt
+│   └── BookController.cs      # Book CRUD operations
+├── Data/
+│   ├── AppDbContext.cs        # EF Core database context
+│   └── AppDbContextFactory.cs # Design-time DB factory
+├── Models/
+│   ├── User.cs                # User entity (password: 255 chars)
+│   ├── UserDTO.cs             # User data transfer object
+│   ├── LoginDTO.cs            # Login request model
+│   └── Book.cs                # Book entity
+├── Migrations/                # EF Core migrations
+├── Properties/
+│   └── launchSettings.json    # Launch profiles
+├── Program.cs                 # Application entry point
+├── appsettings.json          # Configuration
+└── library.db                # SQLite database (created after setup)
 ```
 
-## ?? Testing the API
+## 🧪 Testing the API
 
-### Using cURL
-
-```bash
-# Register
-curl -X POST http://localhost:5119/api/Auth/register \
-  -H "Content-Type: application/json" \
-  -d '{"name":"John Doe","email":"john@example.com","password":"password123"}'
-
-# Login
-curl -X POST http://localhost:5119/api/Auth/login \
-  -H "Content-Type: application/json" \
-  -d '{"email":"john@example.com","password":"password123"}'
-
-# Get all books (with token)
-curl -X GET http://localhost:5119/api/Book/getAllBooks \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN"
-```
 
 ### Using Postman
 
-Import the endpoints or use the OpenAPI documentation available at:
-- Development: http://localhost:5119/openapi/v1.json
+Import the endpoints
 
-## ?? Development
+## Development
 
 ### Running in Development Mode
 
@@ -356,7 +335,7 @@ This will:
 - Disable detailed error pages
 - Use production configuration
 
-## ?? Database Migrations
+## Database Migrations
 
 ### Create a new migration
 ```bash
@@ -373,98 +352,116 @@ dotnet ef database update
 dotnet ef migrations remove
 ```
 
-## ?? Dependencies
+## Dependencies
 
+### NuGet Packages
+
+This project uses the following NuGet packages:
+
+| Package | Version | Purpose |
+|---------|---------|---------|
+| **BCrypt.Net-Next** | 4.0.3 | Secure password hashing with BCrypt algorithm |
+| **Microsoft.AspNetCore.Authentication.JwtBearer** | 10.0.0 | JWT Bearer token authentication middleware |
+| **Microsoft.AspNetCore.OpenApi** | 10.0.0 | OpenAPI/Swagger documentation generation |
+| **Microsoft.EntityFrameworkCore.Design** | 10.0.0 | Design-time tools for Entity Framework Core |
+| **Microsoft.EntityFrameworkCore.Sqlite** | 10.0.0 | SQLite database provider for Entity Framework Core |
+| **Microsoft.EntityFrameworkCore.Tools** | 10.0.0 | Command-line tools for EF Core migrations |
+| **System.IdentityModel.Tokens.Jwt** | 8.2.1 | JWT token creation and validation |
+
+### Package Details
+
+#### Security & Authentication
 ```xml
 <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
 <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.0" />
-<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.0" />
 <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.1" />
 ```
+- **BCrypt.Net-Next**: Industry-standard password hashing with adaptive work factor
+- **JwtBearer**: Middleware for validating JWT tokens in Authorization header
+- **IdentityModel.Tokens.Jwt**: Library for generating and validating JWT tokens
 
-## ?? Security Considerations
+#### Database
+```xml
+<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.0" />
+<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.0" />
+<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.0" />
+```
+- **EF Core Sqlite**: Lightweight database provider for development and small-scale applications
+- **EF Core Design**: Contains design-time components for Entity Framework Core
+- **EF Core Tools**: Provides `dotnet ef` commands for database migrations
 
-### ? Implemented
+#### API Documentation
+```xml
+<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0" />
+```
+- **OpenAPI**: Generates OpenAPI specification for API documentation and testing
 
-1. **Password Hashing with BCrypt**
-   - Work factor: 11 (configurable)
-   - Automatic salt generation
-   - One-way encryption
+### Installation Commands
 
-2. **JWT Authentication**
-   - Token-based authentication
-   - 24-hour token expiration
-   - Secure signing algorithm (HS256)
+Install all dependencies at once:
+```bash
+dotnet restore
+```
 
-3. **CORS Protection**
-   - Restricted to specific origins
-   - Credential support enabled
+Or install packages individually:
+```bash
+# Security packages
+dotnet add package BCrypt.Net-Next --version 4.0.3
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 10.0.0
+dotnet add package System.IdentityModel.Tokens.Jwt --version 8.2.1
 
-4. **Input Validation**
-   - Password length validation (min 6 chars)
-   - Email format validation
-   - Required field checks
+# Database packages
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 10.0.0
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 10.0.0
+dotnet add package Microsoft.EntityFrameworkCore.Tools --version 10.0.0
 
-### ?? For Production Deployment
+# API Documentation
+dotnet add package Microsoft.AspNetCore.OpenApi --version 10.0.0
+```
 
-1. **Change JWT Secret Key**
-   - Generate a new secure key (256+ bits)
-   - Store in environment variables or Azure Key Vault
+### Verify Installed Packages
 
-2. **Use HTTPS**
-   - Enable `app.UseHttpsRedirection()`
-   - Configure SSL certificates
+```bash
+# List all installed packages
+dotnet list package
 
-3. **Update CORS**
-   - Restrict to production frontend domains only
-   - Remove development origins
+# Check for outdated packages
+dotnet list package --outdated
 
-4. **Use Production Database**
-   - Switch from SQLite to SQL Server, PostgreSQL, or MySQL
-   - Enable connection pooling
+# Check for vulnerable packages
+dotnet list package --vulnerable
+```
 
-5. **Enable Rate Limiting**
-   - Prevent brute force attacks on login endpoint
-   - Implement account lockout after N failed attempts
+### Target Framework
 
-6. **Add Email Verification**
-   - Verify email addresses before activation
-   - Send confirmation emails
+- **.NET 10.0** (`net10.0`)
 
-7. **Strengthen Password Requirements**
-   - Increase minimum length (8+ characters)
-   - Require uppercase, lowercase, numbers, symbols
-   - Implement password strength meter
+### Project Configuration
 
-8. **Add Logging and Monitoring**
-   - Log authentication attempts
-   - Monitor for suspicious activity
-   - Set up alerts for security events
+```xml
+<PropertyGroup>
+  <TargetFramework>net10.0</TargetFramework>
+  <Nullable>enable</Nullable>
+  <ImplicitUsings>enable</ImplicitUsings>
+  <RootNamespace>library_management_system_backend</RootNamespace>
+</PropertyGroup>
+```
 
-## ?? Contributing
+### Implicit Usings
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## ?? License
-
-This project is licensed under the MIT License.
-
-## ?? Author
-
-**Ashan**
-- GitHub: [@Ashan37](https://github.com/Ashan37)
-
-## ?? Acknowledgments
-
-- ASP.NET Core documentation
-- Entity Framework Core
-- JWT authentication best practices
-- BCrypt.Net-Next for password hashing
-
----
-
-For the frontend React application, see: [library-management-system-frontend](https://github.com/Ashan37/library-management-system-frontend)
+With `<ImplicitUsings>enable</ImplicitUsings>`, the following namespaces are automatically available:
+- `System`
+- `System.Collections.Generic`
+- `System.IO`
+- `System.Linq`
+- `System.Net.Http`
+- `System.Threading`
+- `System.Threading.Tasks`
+- `Microsoft.AspNetCore.Builder`
+- `Microsoft.AspNetCore.Hosting`
+- `Microsoft.AspNetCore.Http`
+- `Microsoft.AspNetCore.Routing`
+- `Microsoft.Extensions.Configuration`
+- `Microsoft.Extensions.DependencyInjection`
+- `Microsoft.Extensions.Hosting`
+- `Microsoft.Extensions.Logging`
