@@ -44,19 +44,16 @@ C:\Users\ashan\Desktop\library-management-system\library-management-system-backe
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\BuildHost-netcore\tr\System.CommandLine.resources.dll
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\BuildHost-netcore\zh-Hans\System.CommandLine.resources.dll
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\BuildHost-netcore\zh-Hant\System.CommandLine.resources.dll
-C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\appsettings.Development.json
-C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\appsettings.json
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\library-management-system-backend.staticwebassets.endpoints.json
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\library-management-system-backend.exe
+C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\appsettings.json
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\library-management-system-backend.deps.json
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\library-management-system-backend.runtimeconfig.json
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\library-management-system-backend.dll
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\library-management-system-backend.pdb
-C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\BCrypt.Net-Next.dll
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\Humanizer.dll
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\Microsoft.AspNetCore.JsonPatch.dll
-C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\Microsoft.Build.dll
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\Microsoft.Build.Framework.dll
@@ -85,7 +82,6 @@ C:\Users\ashan\Desktop\library-management-system\library-management-system-backe
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\Microsoft.OpenApi.dll
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\Mono.TextTemplating.dll
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\Newtonsoft.Json.dll
-C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\Newtonsoft.Json.Bson.dll
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\SQLitePCLRaw.batteries_v2.dll
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\SQLitePCLRaw.core.dll
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\SQLitePCLRaw.provider.e_sqlite3.dll
@@ -216,3 +212,4 @@ C:\Users\ashan\Desktop\library-management-system\library-management-system-backe
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\obj\Debug\net10.0\library-management-system-backend.pdb
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\obj\Debug\net10.0\library-management-system-backend.genruntimeconfig.cache
 C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\obj\Debug\net10.0\ref\library-management-system-backend.dll
+C:\Users\ashan\Desktop\library-management-system\library-management-system-backend\library-management-system-backend\bin\Debug\net10.0\BCrypt.Net-Next.dll
