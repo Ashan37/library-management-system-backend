@@ -19,5 +19,5 @@ namespace library_management_system_backend.Models
         [Required]
         [StringLength(100, MinimumLength = 6)]
         public string password { get; set; } = string.Empty;
-	}
+    }
 }

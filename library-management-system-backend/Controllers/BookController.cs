@@ -1,5 +1,6 @@
 ﻿using library_management_system_backend.Data;
 using library_management_system_backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +8,7 @@ namespace library_management_system_backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class BookController : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
@@ -16,15 +18,13 @@ namespace library_management_system_backend.Controllers
             _appDbContext = appDbContext;
         }
 
-        [HttpGet]
-        [Route("getAllBooks")]
+        [HttpGet("getAllBooks")]
         public async Task<ActionResult<IEnumerable<Book>>> GetAllBooks()
         {
             return Ok(await _appDbContext.Books.ToListAsync());
         }
 
-        [HttpGet]
-        [Route("getBook/{id}")]
+        [HttpGet("getBook/{id}")]
         public async Task<ActionResult<Book>> GetBook(int id)
         {
             var book = await _appDbContext.Books.FindAsync(id);
@@ -37,8 +37,7 @@ namespace library_management_system_backend.Controllers
             return Ok(book);
         }
 
-        [HttpPost]
-        [Route("addBook")]
+        [HttpPost("addBook")]
         public async Task<ActionResult<Book>> AddBook(Book objBook)
         {
             if (!ModelState.IsValid)
@@ -52,8 +51,7 @@ namespace library_management_system_backend.Controllers
             return CreatedAtAction(nameof(GetBook), new { id = objBook.id }, objBook);
         }
 
-        [HttpPut]
-        [Route("updateBook/{id}")]
+        [HttpPut("updateBook/{id}")]
         public async Task<IActionResult> UpdateBook(int id, Book objBook)
         {
             if (id != objBook.id)
@@ -85,8 +83,7 @@ namespace library_management_system_backend.Controllers
             return NoContent();
         }
 
-        [HttpDelete]
-        [Route("deleteBook/{id}")]
+        [HttpDelete("deleteBook/{id}")]
         public async Task<IActionResult> DeleteBook(int id)
         {
             var book = await _appDbContext.Books.FindAsync(id);
