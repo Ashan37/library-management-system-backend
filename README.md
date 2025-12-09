@@ -1,4 +1,4 @@
-﻿# Library Management System - Backend API
+﻿# Library Management System 
 
 A RESTful API built with ASP.NET Core for managing a library system with user authentication, book management, and JWT-based authorization.
 
